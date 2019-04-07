@@ -41,16 +41,16 @@ def reconstruction(kp1, kp2, R, T):
     gamma = eigenvectors[points, 1]
 
     if np.all(lamda >= np.zeros_like(lamda)):
-        # print R
-        # print T
+        print R
+        print T
         print lamda
-        # print gamma
-        # fig = plt.figure()
-        # ax = Axes3D(fig)
-        # line1 = ax.plot(kp1[0, :], kp1[1, :], np.transpose(lamda), 'ok')
+        print gamma
+        fig = plt.figure()
+        ax = Axes3D(fig)
+        line1 = ax.plot(kp1[0, :], kp1[1, :], np.transpose(lamda), 'ok')
         xyz = np.vstack((kp1[0:2,:], np.transpose(lamda)))
         print xyz.shape
-        # plt.show()
+        plt.show()
         pcd = PointCloud()
         pcd.points = Vector3dVector(np.transpose(xyz))
         write_point_cloud("test.ply", pcd)
